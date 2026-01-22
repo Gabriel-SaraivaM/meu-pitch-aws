@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CloudResilience: Solução para Quedas na AWS</title>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: rgba(0, 123, 255, 0.9);
+      color: white;
+      padding: 50px 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      position: relative;
+      z-index: 10;
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      margin: 0 0 10px 0;
+      font-size: 2.5em;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 1.2em;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* 🔧 SOLUÇÃO 1 APLICADA AQUI */
+    .flashcard-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 60vh;
+      position: relative; /* ESSENCIAL */
+      margin-top: 40px;   /* separação real do header */
+    }
+
+    .flashcard {
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      width: 80%;
+      max-width: 800px;
+      padding: 30px;
+      text-align: center;
+      transform: scale(0.9);
+      opacity: 0;
+      transition: all 0.5s ease;
+      position: absolute;
+    }
+
+    .flashcard.active {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .flashcard h2 {
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+
+    .flashcard img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin: 20px 0;
+    }
+
+    .flashcard ul {
+      text-align: left;
+      display: inline-block;
+    }
+
+    .nav-buttons {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0,123,255,0.8);
+      color: white;
+      border: none;
+      padding: 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 24px;
+      transition: background-color 0.3s;
+      z-index: 20;
+    }
+
+    .nav-buttons:hover {
+      background-color: rgba(0,123,255,1);
+    }
+
+    .prev {
+      left: 20px;
+    }
+
+    .next {
+      right: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(0,123,255,0.9);
+      color: white;
+      margin-top: 20px;
+      clear: both;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 30px 20px;
+      }
+
+      header h1 {
+        font-size: 2em;
+      }
+
+      header p {
+        font-size: 1em;
+      }
+
+      .flashcard {
+        width: 90%;
+        padding: 20px;
+      }
+
+      .nav-buttons {
+        padding: 10px;
+        font-size: 18px;
+      }
+
+      .flashcard-container {
+        min-height: 50vh;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>CloudResilience: Protegendo Empresas contra Quedas na AWS</h1>
+  <p>Uma apresentação interativa com flashcards sobre um projeto inovador para resiliência em nuvem.</p>
+</header>
+
+<div class="container">
+  <div class="flashcard-container">
+
+    <button class="nav-buttons prev" onclick="prevCard()">&#8249;</button>
+
+    <div class="flashcard active" id="card1">
+      <h2>O Problema: A Vulnerabilidade da Dependência na AWS</h2>
+      <p>Imagine um cenário onde a Amazon Web Services sofre uma interrupção massiva...</p>
+      <ul>
+        <li>Perda de dados críticos.</li>
+        <li>Impactos econômicos severos.</li>
+        <li>Riscos à segurança.</li>
+      </ul>
+      <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80">
+    </div>
+
+    <div class="flashcard" id="card2">
+      <h2>A Solução: CloudResilience</h2>
+      <p>Plataforma multi-cloud com failover automático.</p>
+      <ul>
+        <li>Redundância automática</li>
+        <li>Monitoramento em tempo real</li>
+        <li>Backup seguro</li>
+      </ul>
+      <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80">
+    </div>
+
+    <div class="flashcard" id="card3">
+      <h2>Desdobramentos e Impacto</h2>
+      <ul>
+        <li>Redução de riscos</li>
+        <li>Expansão de mercado</li>
+        <li>Escalabilidade global</li>
+      </ul>
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80">
+    </div>
+
+    <button class="nav-buttons next" onclick="nextCard()">&#8250;</button>
+
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2023 CloudResilience. Apresentação criada para avaliação do Módulo 3.</p>
+</footer>
+
+<script>
+  let currentCard = 1;
+  const totalCards = 3;
+
+  function showCard(cardNumber) {
+    document.querySelectorAll('.flashcard').forEach(card =>
+      card.classList.remove('active')
+    );
+    document.getElementById(`card${cardNumber}`).classList.add('active');
+  }
+
+  function nextCard() {
+    currentCard = currentCard < totalCards ? currentCard + 1 : 1;
+    showCard(currentCard);
+  }
+
+  function prevCard() {
+    currentCard = currentCard > 1 ? currentCard - 1 : totalCards;
+    showCard(currentCard);
+  }
+
+  setInterval(nextCard, 10000);
+</script>
+
+</body>
+</html>
